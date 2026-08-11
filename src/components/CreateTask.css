@@ -1,0 +1,28 @@
+#container-create-task {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem;
+}
+
+#task-input-container {
+    width: 100%;
+    display: flex;
+    gap: 0.5rem;
+}
+
+#task {
+    flex: 1;
+    height: 30px;
+    padding: 0 5px;
+    border-radius: 5px;
+}
+
+#add-task {
+    width: 45px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: solid 1px #fff;
+    background-color: #097934;
+    color: white;
+}

@@ -1,13 +1,17 @@
 import { FaPlus } from "react-icons/fa";
+import "./CreateTask.css";
 
 const CreateTask = () => {
   return (
-    <div id="form-create-task">
+    <div id="container-create-task">
         <label htmlFor="task">Insira uma nova tarefa:</label>
-        <input type="text" name="task" id="task"/>
-        <button id="create-task">
-            <FaPlus/>
-        </button>
+        <div id="task-input-container">
+            <input type="text" name="task" id="task"/>
+            <button id="add-task">
+                <FaPlus/>
+            </button>
+        </div>
+        
     </div>
   )
 }
