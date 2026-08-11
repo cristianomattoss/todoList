@@ -2,7 +2,7 @@ import { FaEdit } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
 import "./ListTask.css"
 
-const ListTask = ({tasks}) => {
+const ListTask = ({tasks, toggleTask}) => {
   return (
     <div id='container-list'>
         <div id="container-search">
@@ -22,8 +22,14 @@ const ListTask = ({tasks}) => {
         <div id='list-tasks'>
             {tasks.map((task, index) => (
                 <div className="task" key={index}>
-                    <input type="checkbox" name="tasks" id={`task-${index}`}/>
-                    <p>{task}</p>
+                    <input 
+                        type="checkbox"
+                        name="tasks" 
+                        id={`task-${index}`} 
+                        checked={task.completed} 
+                        onChange={() => toggleTask(index)}
+                    />
+                    <p className={task.completed ? "completed" : ""}>{task.text}</p>
                     <div className="task-actions">
                         <button type="button" className="edit">
                             <FaEdit />

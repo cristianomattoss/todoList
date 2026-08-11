@@ -7,15 +7,28 @@ function App() {
   const [tasks, setTasks] = useState([]);
 
   const createTask = (task) => {
-    const newTasks = [...tasks, task];
+    const newTask = {
+        text: task,
+        completed: false
+    };
+
+    const newTasks = [...tasks, newTask];
     setTasks(newTasks);
   }
+
+  const toggleTask = (index) => {
+    const newTasks = [...tasks];
+
+    newTasks[index].completed = !newTasks[index].completed;
+
+    setTasks(newTasks);
+}
 
   return (
     <div className="container">
       <h1>Minha lista de tarefas</h1>
-      <CreateTask createTask={createTask}/>
-      <ListTask tasks={tasks}/>
+      <CreateTask createTask={createTask} />
+      <ListTask tasks={tasks} toggleTask={toggleTask}/>
     </div>
   )
 }
