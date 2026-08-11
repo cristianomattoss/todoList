@@ -2,7 +2,7 @@ import { FaEdit } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
 import "./ListTask.css"
 
-const ListTask = () => {
+const ListTask = ({tasks}) => {
   return (
     <div id='container-list'>
         <div id="container-search">
@@ -20,30 +20,20 @@ const ListTask = () => {
             </div>
         </div>
         <div id='list-tasks'>
-            <div className="task">
-                <input type="checkbox" name="check" id="check1"/>
-                <p>Tarefa1</p>
-                <div className="task-actions">
-                    <button type="button" className="edit">
-                        <FaEdit />
-                    </button>
-                    <button type="button" className="remove">
-                        <FaTrash />
-                    </button>
+            {tasks.map((task, index) => (
+                <div className="task" key={index}>
+                    <input type="checkbox" name="tasks" id={`task-${index}`}/>
+                    <p>{task}</p>
+                    <div className="task-actions">
+                        <button type="button" className="edit">
+                            <FaEdit />
+                        </button>
+                        <button type="button" className="remove">
+                            <FaTrash />
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div className="task">
-                <input type="checkbox" name="check" id="check2"/>
-                <p>Tarefa2</p>
-                <div className="task-actions">
-                    <button type="button" className="edit">
-                        <FaEdit />
-                    </button>
-                    <button type="button" className="remove">
-                        <FaTrash />
-                    </button>
-                </div>
-            </div>
+            ))}
         </div>
     </div>
   )
