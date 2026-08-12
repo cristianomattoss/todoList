@@ -2,7 +2,7 @@ import { FaEdit } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
 import "./ListTask.css"
 
-const ListTask = ({tasks, toggleTask}) => {
+const ListTask = ({tasks, toggleTask, removeTask}) => {
   return (
     <div id='container-list'>
         <div id="container-search">
@@ -34,7 +34,7 @@ const ListTask = ({tasks, toggleTask}) => {
                         <button type="button" className="edit">
                             <FaEdit />
                         </button>
-                        <button type="button" className="remove">
+                        <button type="button" className="remove" onClick={() => removeTask(index)}>
                             <FaTrash />
                         </button>
                     </div>

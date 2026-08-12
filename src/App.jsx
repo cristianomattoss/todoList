@@ -24,11 +24,17 @@ function App() {
     setTasks(newTasks);
 }
 
+const removeTask = (index) => {
+  const newTasks = [...tasks];
+  newTasks.splice(index, 1)
+  setTasks(newTasks)
+}
+
   return (
     <div className="container">
       <h1>Minha lista de tarefas</h1>
       <CreateTask createTask={createTask} />
-      <ListTask tasks={tasks} toggleTask={toggleTask}/>
+      <ListTask tasks={tasks} toggleTask={toggleTask} removeTask={removeTask}/>
     </div>
   )
 }
