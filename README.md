@@ -62,3 +62,9 @@ src/
 ├── App.jsx
 ├── index.css
 └── main.jsx
+```
+
+## 👨‍💻 Autor
+
+- GitHub: https://github.com/cristianomattoss
+- LinkedIn: https://www.linkedin.com/in/cristiano-mattoss/
