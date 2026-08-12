@@ -3,7 +3,7 @@ import { FaTrash } from "react-icons/fa";
 import "./ListTask.css"
 import { useEffect, useState } from "react";
 
-const ListTask = ({tasks, toggleTask, removeTask}) => {
+const ListTask = ({tasks, toggleTask, removeTask, chooseEditTask}) => {
     const [searchValueInput, setSearchValue] = useState("");
     const [filterValueInput, setFilterValue] = useState("all");
     const [filterTasks, setFilterTasks] = useState(tasks);
@@ -71,7 +71,7 @@ const ListTask = ({tasks, toggleTask, removeTask}) => {
                     />
                     <p className={task.completed ? "completed" : ""}>{task.text}</p>
                     <div className="task-actions">
-                        <button type="button" className="edit">
+                        <button type="button" className="edit" onClick={() => chooseEditTask(task.text, index)}>
                             <FaEdit />
                         </button>
                         <button type="button" className="remove" onClick={() => removeTask(index)}>

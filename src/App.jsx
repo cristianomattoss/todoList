@@ -2,9 +2,12 @@ import { useState } from 'react'
 import './App.css'
 import CreateTask from './components/CreateTask'
 import ListTask from './components/ListTask'
+import EditTask from './components/EditTask'
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  const [editText, setText] = useState("");
+  const [editIndex, setIndex] = useState(null);
 
   const createTask = (task) => {
     const newTask = {
@@ -30,13 +33,49 @@ const removeTask = (index) => {
   setTasks(newTasks)
 }
 
-  return (
-    <div className="container">
-      <h1>Minha lista de tarefas</h1>
+const chooseEditTask = (textEdit, indexEdit) => {
+  setText(textEdit);
+  setIndex(indexEdit);
+}
+
+const editTask = (newText) => {
+    const editTasks = tasks.map((task, index) => {
+        if (index === editIndex) {
+            return {
+                ...task,
+                text: newText.trim()
+            };
+        }
+
+        return task;
+    });
+
+    setTasks(editTasks);
+    setText("");
+    setIndex(null);
+}
+
+const cancelEditTask = () => {
+  setText("");
+  setIndex(null);
+}
+
+return (
+  <div className="container">
+    <h1>Minha lista de tarefas</h1>
+    {!editText && editIndex == null ? (
+      <>
       <CreateTask createTask={createTask} />
-      <ListTask tasks={tasks} toggleTask={toggleTask} removeTask={removeTask}/>
-    </div>
-  )
+      <ListTask tasks={tasks} toggleTask={toggleTask} removeTask={removeTask} chooseEditTask={chooseEditTask}/>
+      </>
+    ) : (
+      <EditTask 
+        editText={editText}
+        editTask={editTask}
+        cancelEditTask={cancelEditTask}/>
+    )} 
+  </div>
+)
 }
 
 export default App

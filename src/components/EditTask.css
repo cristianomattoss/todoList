@@ -1,0 +1,40 @@
+#container-edit-task {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem;
+}
+
+#edit-task-input-container {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+}
+
+#edit-task {
+    flex: 1;
+    height: 30px;
+    padding: 0 10px;
+    border-radius: 5px;
+}
+
+#save-edit {
+    width: 45px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: #097934;
+    color: white;
+    cursor: pointer;
+}
+
+#cancel-edit {
+    align-self: flex-start;
+    margin-top: 0.5rem;
+    height: 30px;
+    padding: 0 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #a83232;
+    color: white;
+    cursor: pointer;
+}
