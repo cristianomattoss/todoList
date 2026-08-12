@@ -5,7 +5,7 @@ import ListTask from './components/ListTask'
 import EditTask from './components/EditTask'
 
 function App() {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem("tasks")) || []);
   const [editText, setText] = useState("");
   const [editIndex, setIndex] = useState(null);
 
@@ -17,6 +17,7 @@ function App() {
 
     const newTasks = [...tasks, newTask];
     setTasks(newTasks);
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
   }
 
   const toggleTask = (index) => {
@@ -25,12 +26,14 @@ function App() {
     newTasks[index].completed = !newTasks[index].completed;
 
     setTasks(newTasks);
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
 }
 
 const removeTask = (index) => {
   const newTasks = [...tasks];
   newTasks.splice(index, 1)
   setTasks(newTasks)
+  localStorage.setItem("tasks", JSON.stringify(newTasks));
 }
 
 const chooseEditTask = (textEdit, indexEdit) => {
@@ -51,6 +54,7 @@ const editTask = (newText) => {
     });
 
     setTasks(editTasks);
+    localStorage.setItem("tasks", JSON.stringify(editTasks));
     setText("");
     setIndex(null);
 }
